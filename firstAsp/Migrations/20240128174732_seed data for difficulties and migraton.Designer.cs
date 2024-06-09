@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using firstAsp.Data;
 
@@ -11,9 +12,11 @@ using firstAsp.Data;
 namespace firstAsp.Migrations
 {
     [DbContext(typeof(FirstDbContext))]
-    partial class FirstDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240128174732_seed data for difficulties and migraton")]
+    partial class seeddatafordifficultiesandmigraton
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,35 +55,6 @@ namespace firstAsp.Migrations
                             Id = new Guid("d0cd1157-49a1-44c7-a015-3e6fbbf7f1cb"),
                             Name = "Hard"
                         });
-                });
-
-            modelBuilder.Entity("firstAsp.Models.Domain.Image", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("FileDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FileExtension")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FilePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("FileSizeInByte")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("firstAsp.Models.Domain.Region", b =>

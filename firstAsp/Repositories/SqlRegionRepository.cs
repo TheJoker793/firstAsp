@@ -41,16 +41,17 @@ namespace firstAsp.Repositories
 
         public async Task<Region?> GetByIdAsync(Guid id)
         {
-            return _firstDbContext.regions.FirstOrDefault(x => x.Id == id);
+            return await _firstDbContext.regions.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Region?> UpdateAsync(Guid id, Region region)
         {
             var existingRegion= await _firstDbContext.regions.FirstOrDefaultAsync(x => x.Id == id);
-            if (existingRegion != null)
+            if (existingRegion == null)
             {
                 return null;
             }
+            
             existingRegion.Code=region.Code;
             existingRegion.Name=region.Name;
             existingRegion.RegionImageUrl=region.RegionImageUrl;

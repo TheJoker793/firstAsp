@@ -4,7 +4,7 @@ using firstAsp.Models.DTO;
 
 namespace firstAsp.Mappings
 {
-    public class AutoMapperProfiles:Profile
+    public class AutoMapperProfiles : Profile
     {
         public AutoMapperProfiles()
         {
@@ -12,17 +12,15 @@ namespace firstAsp.Mappings
                 .ForMember(x=>x.Name,opt=>opt.MapFrom(x=>x.FullName))
                 .ReverseMap();*/
             CreateMap<Region, RegionDto>().ReverseMap();
-            CreateMap<AddRegionRequestDto,Region>().ReverseMap();
+            CreateMap<AddRegionRequestDto, Region>().ReverseMap();
             CreateMap<UpdateRegionRequestDto, Region>().ReverseMap();
-            
+            CreateMap<AddWalkRequestDto, Walk>().ReverseMap();
+            CreateMap<Walk, WalkDto>().ReverseMap();
+            CreateMap<Difficulty, DifficultyDto>().ReverseMap();
+            CreateMap<UpdateWalksRequestDto, Walk>().ReverseMap();
+
+
         }
     }
-   /* public class UserDto
-    {
-       // public String FullName { get; set; }
-    }*/
-   /* public class UserDomain
-    {
-        //public String Name { get; set; }
-    }*/
 }
+  
